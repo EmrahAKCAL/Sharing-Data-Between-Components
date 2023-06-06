@@ -1,0 +1,54 @@
+<section>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h1>Parent Component</h1>
+          <div class="form">
+            <input type="text" placeholder="input value" [(ngModel)]="inputValue">
+            <div class="btn-group">
+              <button class="btn btn-primary" (click)="sendToChild1()">Send to Child1</button>
+              <button class="btn btn-success" (click)="sendToChild2()">Send to Child2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="msg-box">
+        <div class="list-group">
+          <h3>Message From Child1</h3>
+          <ul>
+            <li *ngFor="let msg of msgChild1ToParent; let i = index">
+              {{i + 1 }}-{{msg}}
+            </li>
+          </ul>
+        </div>
+        <div class="list-group">
+          <h3>Message From Child2</h3>
+          <ul>
+            <li *ngFor="let msg of msgChild2ToParent; let i = index">
+              {{i + 1 }}-{{msg}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <app-child1
+            [msgFromParent]="msgParentToChild1"
+            [msgFromChild2]="msgChild2ToChild1"
+            (eventChild1ToParent)="eventChild1ToParent($event)"
+            (eventChild1ToChild2)="eventChild1ToChild2($event)"
+          ></app-child1>
+        </div>
+        <div class="card-content">
+          <app-child2
+            [msgFromParent]="msgParentToChild2"
+            [msgFromChild1]="msgChild1ToChild2"
+            (eventChild2ToParent)="eventChild2ToParent($event)"
+            (eventChild2ToChild1)="eventChild2ToChild1($event)"
+          ></app-child2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

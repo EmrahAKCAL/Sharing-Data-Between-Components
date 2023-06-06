@@ -1,0 +1,28 @@
+<div class="card">
+  <h3>Child Component 2 </h3>
+  <div class="content">
+    <div class="form-content">
+      <input type="text" placeholder="input value" [(ngModel)]="inputValue">
+      <button class="btn btn-primary" (click)="sendToParent()">Send to Parent</button>
+      <button class="btn btn-success" (click)="sendToChild1()">Send to Child1</button>
+    </div>
+  </div>
+  <div class="msg-box">
+    <div class="list-group">
+      <h3>Message From Parent</h3>
+      <ul>
+        <li *ngFor="let msg of msgFromParent; let i = index">
+          {{i + 1 }}-{{msg}}
+        </li>
+      </ul>
+    </div>
+    <div class="list-group">
+      <h3>Message From Child2</h3>
+      <ul>
+        <li *ngFor="let msg of msgFromChild1; let i = index">
+          {{i + 1 }}-{{msg}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
